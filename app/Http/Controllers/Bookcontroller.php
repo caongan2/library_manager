@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -36,13 +37,15 @@ class Bookcontroller extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Book $book)
+    public function store(BookRequest $request, Book $book)
     {
+//        dd('123');
         $path = $request->file('image')->store('images', 'public');
         $book->name = $request->name;
         $book->author = $request->author;
         $book->category_id = $request->category;
         $book->price = $request->price;
+        $book->description = $request->description;
         $book->image = $path;
         $book->save();
         return redirect()->route('book.list');

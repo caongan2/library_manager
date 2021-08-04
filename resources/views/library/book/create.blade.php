@@ -26,40 +26,46 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="inputClientCompany">Name</label>
-                <input type="text" value="{{old('email')}}" id="inputClientCompany" name="name"
-                       class=" form-control">
-{{--                @error('email')--}}
-{{--                <p class="text-danger">{{$message}}</p>--}}
-{{--                @enderror--}}
+                <input type="text" value="{{old('name')}}" id="inputClientCompany" name="name"
+                       class="@error('name') is-invalid @enderror  form-control">
+                @error('name')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="inputDescription">Author</label>
-                <input type="text" value="{{old('phone')}}" name="author" id="inputDescription"
-                       class="form-control">
-{{--                @error('phone')--}}
-{{--                <p class="text-danger">{{$message}}</p>--}}
-{{--                @enderror--}}
+                <input type="text" value="{{old('author')}}" name="author" id="inputDescription"
+                       class="@error('author') is-invalid @enderror form-control">
+                @error('author')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="inputName">Price</label>
-                <input type="number" value="{{old('username')}}" name="price" id="inputName"
-                       class="form-control">
-{{--                @error('username')--}}
-{{--                <p class="text-danger">{{$message}}</p>--}}
-{{--                @enderror--}}
+                <input type="number" value="{{old('price')}}" name="price" id="inputName"
+                       class="@error('price') is-invalid @enderror form-control">
+                @error('price')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="inputDescription">Category</label>
                 <div class="input-group mb-3">
                     <select name="category" id="">
                         @foreach($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                            <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>
-{{--                @error('password')--}}
-{{--                <p class="text-danger">{{$message}}</p>--}}
-{{--                @enderror--}}
+            </div>
+            <div class="form-group">
+                <label for="inputDescription">Description</label>
+                <div class="input-group mb-3">
+                    <textarea class="@error('description') is-invalid @enderror form-control" name="description" id="" cols="30" rows="5" style="width: 700px"></textarea>
+                    @error('description')
+                    <p class="text-danger">{{$message}}</p>
+                    @enderror
+                </div>
             </div>
             <div class="form-group">
                 <label for="inputDescription">Image</label>
