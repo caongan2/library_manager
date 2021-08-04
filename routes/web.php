@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Bookcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::prefix('book')->group(function (){
+
+    Route::get('/list', [Bookcontroller::class, 'index'])->name('book.list');
+    Route::get('/add', [Bookcontroller::class, 'create'])->name('book.add');
+    Route::post('/create', [Bookcontroller::class, 'store'])->name('book.create');
+
 });
